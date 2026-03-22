@@ -17,8 +17,10 @@ export async function runTryOn(userImageUrl, garmentImageUrl) {
 
   const result = await response.json();
 
+  console.log("FAL RESPONSE:", result);
+
   if (!result?.image?.url) {
-    throw new Error("Fal API failed");
+    throw new Error(JSON.stringify(result));
   }
 
   return result.image.url;
