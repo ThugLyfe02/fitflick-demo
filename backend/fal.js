@@ -1,21 +1,17 @@
-import fetch from "node-fetch";
+import { fal } from "@fal-ai/client";
 
-const FAL_KEY = process.env.FAL_KEY;
+fal.config({
+  credentials: process.env.FAL_KEY,
+});
 
 export async function runTryOn(userImageUrl, garmentImageUrl) {
-  const response = await fetch("https://fal.run/fal-ai/idm-vton", {
-    method: "POST",
-    headers: {
-      "Authorization": `Key ${FAL_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+  const result = await fal.subscribe("fal-ai/idm-vton", {
+    input: {
       human_image: userImageUrl,
-      garment_image: garmentImageUrl
-    })
+      garment_image: garmentImageUrl,
+    },
+    logs: true,
   });
-
-  const result = await response.json();
 
   console.log("FAL RESPONSE:", result);
 
