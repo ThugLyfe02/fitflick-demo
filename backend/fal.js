@@ -11,6 +11,7 @@ export async function runTryOn(userImageUrl, garmentImageUrl) {
       garment_image: garmentImageUrl,
     },
     logs: true,
+    mode: "blocking"
   });
 
   console.log("FAL RESPONSE:", result);
