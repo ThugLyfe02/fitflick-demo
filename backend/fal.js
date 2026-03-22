@@ -1,3 +1,5 @@
+console.log("🔥 NEW FAL FILE LOADED");
+
 import { fal } from "@fal-ai/client";
 
 // Configure fal with your API key
